@@ -1,0 +1,46 @@
+[p2p]
+moniker = "local_node_2"
+listen = "127.0.0.1"
+port = 12121
+
+[rest]
+listen = "127.0.0.1"
+port = 8067
+tls_enabled = false
+
+[logger]
+level = "DEBUG"
+max_file_size_MB = 100
+max_backup_files = 100
+max_retain_files_days = 28
+use_console_logger = false
+use_file_logger = true
+compress = true
+
+[swaps]
+testnet = true
+coin_1 = "BTC.B-918"
+coin_2 = "BTC"
+stake_coin = "FUEL-F7D"
+# stake_amount must be boosted by 10^8 for BNB Chain (this is 100,000)
+stake_amount = 10000000000000
+fee_percent = 0.1
+
+[tss]
+threshold = 2
+participants = 3
+keygen_until = "2020-12-31T00:00:00Z"
+
+[bnb]
+rpc_uri = "tcp://data-seed-pre-0-s3.binance.org:80"
+http_uri = "https://testnet-explorer.binance.org"
+stake_tx = "10F0792810D43A9C37671B98E3AC841CE1CA4638AD76C0BACF12F12CD6EF65B1"
+stake_addr = "tbnb1kw7r73zhuftsaa563kdzp0kz3j282ads6tfh3q"
+reward_addr = "tbnb1kw7r73zhuftsaa563kdzp0kz3j282ads6tfh3q"
+fixed_out_fee = 500
+
+[btc]
+rpc_uri = ""
+indexer_uri = "wss://testnet-indexer.swingby.network/ws"
+reward_addr = "2N8hwP1WmJrFF5QWABn38y63uYLhnJYJYTF"
+fixed_out_fee = 30000
