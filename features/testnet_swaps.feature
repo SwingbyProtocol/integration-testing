@@ -14,10 +14,6 @@ Feature: Test node swaps functionality
   Scenario: adds more float to BTC.B side
     When I send 10.42 "BTC.B-888" to the address "tbnb1ws2z8n9ygrnaeqwng69cxfpnundneyjze9cjsy"
 
-  @send_dan
-  Scenario: sends to dan
-    When I send 30.0 "BTC" to the address "tb1qewtwnyanatl3x0gqr4wyf8g8gyj435zfq5gra8"
-
   @testnet @spend @sBTC
   Scenario: Performing a swap from BTC to BTC.B-888 funds my wallet correctly
     Given I check my "BTC.B-888" balance

@@ -175,7 +175,7 @@ def step_impl(context):
     host = row["Host"]
     port = row["ApiPort"]
     # start a client connected to the given node
-    sn = SwingbyNode("", "", "", host="http://{}".format(host), flags="--rest.port={}".format(port))
+    sn = SwingbyNode("", "", "", host="https://{}".format(host), flags="--rest.port={}".format(port))
     # request status
     print ("GET status for node {} ({}:{})".format(moniker, host, port))
     try:

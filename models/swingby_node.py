@@ -158,5 +158,5 @@ class SwingbyNode:
             pid = self.proc.pid
         return text.format(self.node_id, pid, self.node_home, self.host, self.api_port, self.host, self.peer_port)
 
-# testnet_node = SwingbyNode("", "", "", host="https://testnet-node.swingby.network", flags="--rest.port=443")
-testnet_node = SwingbyNode("", "", "", host="http://localhost", flags="--rest.port=8067")
+testnet_node = SwingbyNode("", "", "", host="https://testnet-node.swingby.network", flags="--rest.port=443")
+# testnet_node = SwingbyNode("", "", "", host="http://localhost", flags="--rest.port=8067")
