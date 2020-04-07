@@ -20,7 +20,7 @@ class BlockCypherClient:
         endpoint = "{}/{}".format(self.host, "txs")
         res = self.request(endpoint)
         if res['code'] != 200:
-            raise Exception("Http code {} - ".format(res_calc['content']))
+            raise Exception("Http code {} - ".format(res['content']))
         return res['content']
 
     def get_latest_tx(self):
@@ -33,7 +33,7 @@ class BlockCypherClient:
         endpoint = self.host
         res = self.request(endpoint)
         if res['code'] != 200:
-            raise Exception("Http code {} - ".format(res_calc['content']))
+            raise Exception("Http code {} - ".format(res['content']))
         return res['content']['height']
 
     def request(self, endpoint, data=None):
