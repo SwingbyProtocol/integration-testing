@@ -121,11 +121,15 @@ def step_impl(context, value, symbol, address):
     bnb_client.send_transaction(address, symbol, value)
 
 @when('I send {value:f} "{symbol}" to the address "{address}" with the memo "{memo}"')
-def step_impl(context, value, symbol, address, memo):
+def step_send_with_memo(context, value, symbol, address, memo):
   if symbol.upper() == "BTC":
     raise Exception("BTC does not support memo transactions")
   else:
     bnb_client.send_transaction(address, symbol, value, memo=memo)
+
+@when('I send {value:f} "{symbol}" to the address "{address}" with that memo')
+def step_send_with_context_memo(context, value, symbol, address):
+  step_send_with_memo(context, value, symbol, address, context.memo)
 
 @when('I send {value:f} "{symbol}" to the nodes TSS address')
 def step_impl(context, value, symbol):
@@ -137,7 +141,7 @@ def step_impl(context, value, symbol):
     bnb_client.send_transaction(address, symbol, value)
 
 @when('I send {value:f} "{symbol}" to the nodes TSS address with the memo "{memo}"')
-def step_impl(context, value, symbol, memo):
+def step_send_tss_with_memo(context, value, symbol, memo):
   node = testnet_node
   address = node.get_tss_address(symbol)
   if symbol.upper() == "BTC":
