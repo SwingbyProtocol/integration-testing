@@ -7,6 +7,7 @@ from binance_chain.environment import BinanceEnvironment
 
 default_pkey = ""
 testnet_env = BinanceEnvironment.get_testnet_env()
+print (testnet_env)
 testnet_priv_key = os.environ.get("BNB_PKEY", default_pkey)
 wallet = Wallet(testnet_priv_key, env=testnet_env)
 bnb_address = wallet.address
