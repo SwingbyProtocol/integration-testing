@@ -12,34 +12,37 @@ Feature: Test node swaps functionality
 
   @add_flaot_BTC.B
   Scenario: adds more float to BTC.B side
-    When I send 10.42 "BTC.B-888" to the address "tbnb1ws2z8n9ygrnaeqwng69cxfpnundneyjze9cjsy"
+    When I send 10.42 "BTCB-1DE" to the address "tbnb1ws2z8n9ygrnaeqwng69cxfpnundneyjze9cjsy"
 
   @testnet @spend @sBTC
-  Scenario: Performing a swap from BTC to BTC.B-888 funds my wallet correctly
-    Given I check my "BTC.B-888" balance
-    When I perform a swap from "BTC" to "BTC.B-888" for 0.105 on testnet
-    And I wait for my "BTC.B-888" balance to change
-    Then my "BTC.B-888" balance has increased by at least 0.105
+  Scenario: Performing a swap from BTC to BTCB-1DE funds my wallet correctly
+    Given I check my "BTCB-1DE" balance
+    When I perform a swap from "BTC" to "BTCB-1DE" for 10.105 on testnet
+    # test swap now exists in the KV store
+    # test swap has WAITING status
+    # test original transac
+    And I wait for my "BTCB-1DE" balance to change
+    Then my "BTCB-1DE" balance has increased by at least 0.105
 
   @testnet @spend @BTC.B
-  Scenario: Performing a swap from BTC.B-888 to BTC funds my wallet correctly
+  Scenario: Performing a swap from BTCB-1DE to BTC funds my wallet correctly
     Given I check my "BTC" balance
-    When I perform a swap from "BTC.B-888" to "BTC" for 3.005 on testnet
+    When I perform a swap from "BTCB-1DE" to "BTC" for 3.005 on testnet
     And I wait for my "BTC" balance to change
     Then my "BTC" balance has increased by at least 3.0
 
   @testnet @refund @BTC
-  Scenario: Performing a swap from BTC.B-888 to BTC but with an invalid address will refund me
-    When I send 0.0015 "BTC.B-888" to the address "tbnb1ws2z8n9ygrnaeqwng69cxfpnundneyjze9cjsy"
+  Scenario: Performing a swap from BTCB-1DE to BTC but with an invalid address will refund me
+    When I send 0.0015 "BTCB-1DE" to the address "tbnb1ws2z8n9ygrnaeqwng69cxfpnundneyjze9cjsy"
     And I wait for 5 seconds
     # reset balance check
-    And I check my "BTC.B-888" balance
+    And I check my "BTCB-1DE" balance
     # wait for refund to send
-    And I wait for my "BTC.B-888" balance to change
-    Then my "BTC.B-888" balance has increased by at least 0.001
+    And I wait for my "BTCB-1DE" balance to change
+    Then my "BTCB-1DE" balance has increased by at least 0.001
 
   @testnet @refund
-  Scenario: Performing a swap from BTC to BTC.B-888 but with an invalid address will refund me
+  Scenario: Performing a swap from BTC to BTCB-1DE but with an invalid address will refund me
     When I check my "BTC" balance
     When I send 0.0015 "BTC" to the address "mr6ioeUxNMoavbr2VjaSbPAovzzgDT7Su9"
      # wait for first send to confirm
@@ -51,14 +54,14 @@ Feature: Test node swaps functionality
     Then my "BTC" balance has increased by at least 0.0008
   
   @volume
-  Scenario: Performing a swap from BTC to BTC.B-888 funds my wallet correctly
-    Given my "BTC" balance is more than 3.5
-    When I perform a swap from "BTC" to "BTC.B-888" for a random small amount on testnet
+  Scenario: Performing a swap from BTC to BTCB-1DE funds my wallet correctly
+    Given my "BTC" balance is more than 1.5
+    When I perform a swap from "BTC" to "BTCB-1DE" for a random small amount on testnet
 
   @volume
-  Scenario: Performing a swap from BTC.B-888 to BTC funds my wallet correctly
-    Given my "BTC.B-888" balance is more than 3.5
-    When I perform a swap from "BTC.B-888" to "BTC" for a random small amount on testnet
+  Scenario: Performing a swap from BTCB-1DE to BTC funds my wallet correctly
+    Given my "BTCB-1DE" balance is more than 1.5
+    When I perform a swap from "BTCB-1DE" to "BTC" for a random small amount on testnet
 
   #Scenario: Sending a BTC float to the network will be accepted
-  #Scenario: Sending a BTC.B-888 float to the network will be accepted
+  #Scenario: Sending a BTCB-1DE float to the network will be accepted

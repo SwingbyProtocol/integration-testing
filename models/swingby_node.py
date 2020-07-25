@@ -32,10 +32,11 @@ class SwingbyNode:
         self.host = host
         self.flags = []
         self.tssAddresses = {
-            "BTC": "mz3emZezkCbXYN967smwgt2oxkqs9qe1Xg",
-            "BTC.B": "tbnb1edqgw7nvldgfx5sqq4n3l96xxrj0h04satqyaa",
-            "BTC.B-918": "tbnb1edqgw7nvldgfx5sqq4n3l96xxrj0h04satqyaa",
-            "BNB": "tbnb1edqgw7nvldgfx5sqq4n3l96xxrj0h04satqyaa"
+            "BTC": "n2RyMXvtpFgFwAVDtpNeakWSM7TYazRAk4",
+            "BTC.B": "tbnb1u45hynte8t7tfmvsxd0x46x92tkucugnk4y7hv",
+            "BTC.B-918": "tbnb1u45hynte8t7tfmvsxd0x46x92tkucugnk4y7hv",
+            "BTCB-1DE": "tbnb1u45hynte8t7tfmvsxd0x46x92tkucugnk4y7hv",
+            "BNB": "tbnb1u45hynte8t7tfmvsxd0x46x92tkucugnk4y7hv"
         }
         flags = flags.split()
         for f in flags:
@@ -64,7 +65,8 @@ class SwingbyNode:
 
     def create_swap(self, amount, from_ccy, to_ccy, address_to):
         # address_to, amount, currency_from, currency_to,
-        return self.sdk.swap(address_to, amount, from_ccy, to_ccy)
+        print("BOOM", address_to, amount, from_ccy, to_ccy)
+        return self.sdk.swap(address_to, str(amount), from_ccy, to_ccy)
 
     def is_running(self):
         if self.proc == None:
