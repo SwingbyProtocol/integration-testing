@@ -6,6 +6,13 @@ Feature: Test node swaps functionality
     # check our environment has enough balance for tests
     # Given each of my wallets has more than 3.1 coins
 
+  @send_BTC.B
+  Scenario: send BTC.B tokens
+    When I send 5.0 "BTCB-1DE" to the address "tbnb1hzmm62lape793rju0dek5ecr83qlh6q608uuzn"
+
+  Scenario: adds more float to BTC side
+    When I send 10.42 "BTC" to the address "mr6ioeUxNMoavbr2VjaSbPAovzzgDT7Su9"
+
   @add_float_BTC
   Scenario: adds more float to BTC side
     When I send 10.42 "BTC" to the address "mr6ioeUxNMoavbr2VjaSbPAovzzgDT7Su9"
@@ -55,12 +62,12 @@ Feature: Test node swaps functionality
   
   @volume
   Scenario: Performing a swap from BTC to BTCB-1DE funds my wallet correctly
-    Given my "BTC" balance is more than 1.5
+    Given my "BTC" balance is more than 0.5
     When I perform a swap from "BTC" to "BTCB-1DE" for a random small amount on testnet
 
   @volume
   Scenario: Performing a swap from BTCB-1DE to BTC funds my wallet correctly
-    Given my "BTCB-1DE" balance is more than 1.5
+    Given my "BTCB-1DE" balance is more than 0.5
     When I perform a swap from "BTCB-1DE" to "BTC" for a random small amount on testnet
 
   #Scenario: Sending a BTC float to the network will be accepted
