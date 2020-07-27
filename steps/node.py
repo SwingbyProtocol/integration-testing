@@ -126,7 +126,7 @@ def step_impl(context, from_ccy, to_ccy, value):
 
 @when('I perform a swap from "{from_ccy:S}" to "{to_ccy:S}" for a random small amount on testnet')
 def step_impl(context, from_ccy, to_ccy):
-  value = round(random.uniform(0.05, 0.5), 8)
+  value = round(random.uniform(0.01, 0.05), 8)
   if from_ccy.upper() != "BTC":
     to_address = btc_client.get_address()
     bnb_client.send_transaction("tbnb1u45hynte8t7tfmvsxd0x46x92tkucugnk4y7hv", from_ccy, value, memo=to_address)
